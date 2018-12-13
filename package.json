@@ -1,0 +1,6 @@
+{
+  "name": "nx-pg-sequalize",
+  "version": "1.0.0",
+  "main": "index.js",
+  "license": "MIT"
+}
