@@ -1,7 +1,11 @@
 {
   "name": "nx-pg-sequalize",
   "version": "1.0.0",
-  "main": "index.js",
+  "main": "server.js",
+  "scripts": {
+    "start": "NODE_ENV=production node server.js",
+    "dev": "NODE_ENV=development eval $(cat dev.env) nodemon server"
+  },
   "license": "MIT",
   "dependencies": {
     "body-parser": "^1.18.3",
