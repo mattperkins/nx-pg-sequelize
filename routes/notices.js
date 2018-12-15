@@ -15,8 +15,11 @@ router.get('/', (req, res) => Notice.findAll()
   })
   .catch(err => console.log(err)))
 
-// localhost:3006/notices/add > add new Notice
-router.get('/add', (req, res) => {
+// Display Add Notice Form > views/add.hbs
+router.get('/add', (req, res) => res.render('add'))
+
+// Add a new Notice > localhost:3006/notices/add
+router.post('/add', (req, res) => {
   // test data
   const data = {
     title: 'All the leaves are brown',
