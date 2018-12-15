@@ -7,7 +7,11 @@ const Notice = require('../models/Notice')
 router.get('/', (req, res) => Notice.findAll()
   .then(notices => {
     console.log(notices)
-    res.sendStatus(200)
+    // render view
+    res.render('notices',
+      {
+        notices
+      })
   })
   .catch(err => console.log(err)))
 
