@@ -22,17 +22,18 @@ app.engine('hbs', xhbs(
     partialsDir: path.join(__dirname, '/views/partials/')
   }))
 app.set('view engine', 'hbs')
+//
 
 // Configure Static Folder
 app.use(express.static(path.join(__dirname, 'public')))
+//
 
-// localhost:3006
-app.get('/', (req, res) => {
-  res.send('hello,world')
-  console.log('Endpoint reached!')
-})
+// localhost:3006/index < index route
+app.get('/', (req, res) => res.render('index', { layout: 'landing' }))
+//
 
-// Notice routes
+// localhost:3006/notices < Notice routes
 app.use('/notices', require('./routes/notices'))
+//
 
 app.listen(PORT || 3006, () => { if (NODE_ENV !== 'production') { console.log(`Server running on ${HOST} ${PORT}`) } })
