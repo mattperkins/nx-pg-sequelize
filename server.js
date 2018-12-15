@@ -17,4 +17,7 @@ app.get('/', (req, res) => {
   console.log('Endpoint reached!')
 })
 
+// Notice routes
+app.use('/notices', require('./routes/notices'))
+
 app.listen(PORT || 3006, () => { if (NODE_ENV !== 'production') { console.log(`Server running on ${HOST} ${PORT}`) } })
