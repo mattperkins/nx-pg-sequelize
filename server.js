@@ -18,7 +18,8 @@ app.engine('hbs', xhbs(
   {
     // configure file suffix .hbs
     extname: '.hbs',
-    defaultLayout: 'main'
+    defaultLayout: 'main',
+    partialsDir: path.join(__dirname, '/views/partials/')
   }))
 app.set('view engine', 'hbs')
 
