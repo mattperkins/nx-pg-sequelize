@@ -1,7 +1,7 @@
 const DBURL = require('./keys')
 const Sequelize = require('sequelize')
 
-exports.dbConnect = new Sequelize(DBURL, {
+module.exports = new Sequelize(DBURL, {
   dialect: 'postgres',
   operatorsAliases: false,
 
