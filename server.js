@@ -1,17 +1,31 @@
 const { PORT, HOST, NODE_ENV } = process.env // yarn dev
 const dbConnect = require('./db')
 const express = require('express')
-const app = express()
 
 const bodyParser = require('body-parser')
 const path = require('path')
-const hbs = require('express-handlebars')
+const xhbs = require('express-handlebars')
 
 // test DB
 dbConnect.authenticate()
   .then(() => console.log('Database connected'))
   .catch((err) => console.log('Error:', err))
 
+const app = express()
+
+// Handlebars middleware
+app.engine('hbs', xhbs(
+  {
+    // configure file suffix .hbs
+    extname: '.hbs',
+    defaultLayout: 'main'
+  }))
+app.set('view engine', 'hbs')
+
+// Configure Static Folder
+app.use(express.static(path.join(__dirname, 'public')))
+
+// localhost:3006
 app.get('/', (req, res) => {
   res.send('hello,world')
   console.log('Endpoint reached!')
