@@ -1,11 +1,11 @@
 const { PORT, HOST, NODE_ENV } = process.env // yarn dev
-const { dbConnect } = require('./db')
+const dbConnect = require('./db')
 const express = require('express')
 const app = express()
 
-// const bodyParser = require('body-parser')
-// const path = require('path')
-// const hbs = require('express-handlebars')
+const bodyParser = require('body-parser')
+const path = require('path')
+const hbs = require('express-handlebars')
 
 // test DB
 dbConnect.authenticate()
