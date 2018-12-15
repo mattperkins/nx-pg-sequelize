@@ -5,6 +5,12 @@
   font-family: sans-serif;
   overflow-x: none;
 }
+html{
+ font-size: 90%;
+}
+body{
+ background-color: #f7f7f7;
+}
 .container{
  max-width: 1176px;
  width: 90%;
