@@ -3,9 +3,16 @@
   padding: 0;
   box-sizing: border-box;
   font-family: sans-serif;
+  overflow-x: none;
 }
 .container{
  max-width: 1176px;
  width: 90%;
  margin: auto;
+}
+.center{
+ height: calc(100vh - 150px);
+ display: flex;
+ justify-content: center;
+ align-items: center;
 }
