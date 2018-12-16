@@ -1,8 +1,8 @@
-<form>
+<form action='/notices/add' method='POST'>
   <div class="form-group">
 
    <label for="title">Notice Title</label>
-   <input type="text" class="form-control" id="title" aria-describedby="titleHelp" placeholder="Enter title">
+   <input type="text" class="form-control" id="title" aria-describedby="titleHelp" placeholder="Enter title" maxlength="200" required>
 
    <small id="titleHelp" class="form-text text-muted">Your title will be used by the search engine so make it as accurate to the subject as possible.</small>
   </div>
@@ -16,19 +16,19 @@
 
   <div class="form-group">
     <label for="price">Price</label>
-    <input type="text" class="form-control" id="price" placeholder="Price">
+    <input type="text" class="form-control" id="price" placeholder="Price" maxlength="6">
   </div>
 
 
 <div class="form-group">
     <label for="keywords">Keywords</label>
-    <input type="text" class="form-control" id="keywords" placeholder="Keywords">
+    <input type="text" class="form-control" id="keywords" placeholder="Keywords" maxlength="100" required>
   </div>
 
 
 <div class="form-group">
     <label for="contact">Contact</label>
-    <input type="text" class="form-control" id="contact" placeholder="contact">
+    <input type="text" class="form-control" id="contact" placeholder="contact" maxlength="50" required>
   </div>
 
 
