@@ -76,7 +76,8 @@ router.get('/search', (req, res) => {
   // Force search query to lowercase
   term = term.toLowerCase()
 
-  Notice.findAll({ where: { title: { [Op.like]: '%' + term + '%' } } })
+  // analyse search query for any words that match the title, keyword or description
+  Notice.findAll({ where: { [Op.or]: [ { title: { [Op.like]: '%' + term + '%' } }, { keywords: { [Op.like]: '%' + term + '%' } }, { description: { [Op.like]: '%' + term + '%' } } ] } })
     .then(notices => res.render('notices', { notices }))
     .catch(err => console.log(err))
 })
