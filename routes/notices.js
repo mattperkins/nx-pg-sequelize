@@ -15,21 +15,13 @@ router.get('/', (req, res) => Notice.findAll()
   })
   .catch(err => console.log(err)))
 
-// Display Add Notice Form > views/add.hbs
+// Render Add Notice Form > views/add.hbs
 router.get('/add', (req, res) => res.render('add'))
 
 // Add a new Notice > localhost:3006/notices/add
 router.post('/add', (req, res) => {
-  // test data
-  const data = {
-    title: 'All the leaves are brown',
-    keywords: 'autumn, nature, song, music',
-    price: 2000,
-    description: 'Very much in keeping with what you had previously stated, i think.',
-    contact: 'email@test.com'
-  }
-
-  let { title, keywords, price, description, contact } = data
+  // Corresponding form 'name' attributes < consume form 'body'
+  let { title, keywords, price, description, contact } = req.body
 
   // Insert into table
   Notice.create({
