@@ -24,6 +24,9 @@ app.engine('hbs', xhbs(
 app.set('view engine', 'hbs')
 //
 
+// Body Parser < Parse the form data
+app.use(bodyParser.urlencoded({ extended: false }))
+
 // Configure Static Folder
 app.use(express.static(path.join(__dirname, 'public')))
 //
