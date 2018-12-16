@@ -1,8 +1,14 @@
-<form action='/notices/add' method='POST'>
+{{#each errors}}
+  <div class="error">
+   <p>{{text}}</p>
+  </div>
+{{/each}}
+
+<form action="/notices/add" method="POST">
   <div class="form-group">
 
    <label for="title">Notice Title</label>
-   <input type="text" class="form-control" id="title" aria-describedby="titleHelp" placeholder="Enter title" maxlength="200">
+   <input type="text" name="title" class="form-control" id="title" aria-describedby="titleHelp" placeholder="Enter title" maxlength="200" value={{title}}>
 
    <small id="titleHelp" class="form-text text-muted">Your title will be used by the search engine so make it as accurate to the subject as possible.</small>
   </div>
@@ -10,27 +16,31 @@
 
   <div class="form-group">
     <label for="description">Description</label>
-    <textarea class="form-control" id="description" rows="3"></textarea>
+    <textarea name="description" class="form-control" id="description" rows="3">{{description}}</textarea>
   </div>
 
 
   <div class="form-group">
     <label for="price">Price</label>
-    <input type="text" class="form-control" id="price" placeholder="Price" maxlength="6">
-  </div>
+    <input type="number" name="price" class="form-control" id="price" describedBy="priceHelp" placeholder="Price" maxlength="6" value={{price}}>
+
+ <small id="priceHelp" class="form-text text-muted">Optional</small>
+ </div>
+
 
 
 <div class="form-group">
     <label for="keywords">Keywords</label>
-    <input type="text" class="form-control" id="keywords" placeholder="Keywords" maxlength="100">
+    <input type="text" name="keywords" class="form-control" id="keywords" placeholder="Keywords" maxlength="100" value={{keywords}}>
   </div>
 
 
 <div class="form-group">
     <label for="contact">Contact</label>
-    <input type="text" class="form-control" id="contact" placeholder="contact" maxlength="50">
+    <input type="email" name="contact" class="form-control" id="contact" placeholder="contact" maxlength="50" value={{contact}}>
   </div>
 
 
-  <button type="submit" class="btn btn-primary">Post Notice</button>
+  <input type="submit" value="Add Notice" class="btn btn-reverse" />
+
 </form>
