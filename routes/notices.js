@@ -22,17 +22,40 @@ router.get('/add', (req, res) => res.render('add'))
 router.post('/add', (req, res) => {
   // Corresponding form 'name' attributes < consume form 'body'
   let { title, keywords, price, description, contact } = req.body
+  let errors = []
 
-  // Insert into table
-  Notice.create({
-    title,
-    keywords,
-    price,
-    description,
-    contact
-  })
-    .then(notice => res.redirect('/notices'))
-    .catch(err => console.log(err))
+  // Validate Add Notice form fields
+  if (!title) {
+    errors.push({ text: 'A title is required' })
+  }
+  if (!keywords) {
+    errors.push({ text: 'Keywords are required' })
+  }
+  if (!description) {
+    errors.push({ text: 'A description is required' })
+  }
+  if (!contact) {
+    errors.push({ text: 'Contact information is required' })
+  }
+
+  // Check for errors
+  if (errors.length > 0) {
+    // re-render the form displaying the errors and current form field input values
+    res.render('add', {
+      errors, title, keywords, description, price, contact
+    })
+  } else {
+    // Insert form data into table
+    Notice.create({
+      title,
+      keywords,
+      price,
+      description,
+      contact
+    })
+      .then(notice => res.redirect('/notices'))
+      .catch(err => console.log(err))
+  }
 })
 
 module.exports = router
