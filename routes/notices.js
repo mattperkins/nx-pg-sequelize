@@ -4,14 +4,14 @@ const Notice = require('../models/Notice')
 const Sequelize = require('sequelize')
 const Op = Sequelize.Op
 
-// localhost:3006/notices > get Notices list
+// get list of notices : '/' is mapped to localhost:3006/notices from server.js
 router.get('/', (req, res) => Notice.findAll()
   .then(notices => {
     // console.log(notices)
     // render view
     res.render('notices',
       {
-        notices
+        notices: notices.reverse()
       })
   })
   .catch(err => console.log(err)))
@@ -53,7 +53,6 @@ router.post('/add', (req, res) => {
     }
     // remove any spaces, fullstops or multiple commas and format to comma seperated
     keywords = keywords.toLowerCase().replace(/^[, ]+|[, ]+$|[, ]+|[, ]+$|[, ]+[.]+|[.]+/g, ' ').trim().replace(/\s+/g, ',')
-
     // ^[, ]+|[, ]+$|[, ]+
     // remove commas, multiple commas, or comma space
     // [.]+|[.]+
@@ -75,12 +74,12 @@ router.post('/add', (req, res) => {
       description,
       contact
     })
-      .then(notice => res.redirect('/notices'))
+      .then(peach => res.redirect('/notices'))
       .catch(err => console.log(err))
   }
 })
 
-// Search for Notices
+// SEARCH for Notices
 // this file puts us in the /notices/ route
 router.get('/search', (req, res) => {
   // query = in url (address bar)
