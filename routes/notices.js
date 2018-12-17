@@ -51,8 +51,21 @@ router.post('/add', (req, res) => {
     } else {
       price = `£${price}`
     }
-    // convert comma space to , (globally)
-    keywords = keywords.toLowerCase().replace(/, /g, ',')
+    // remove any spaces, fullstops or multiple commas and format to comma seperated
+    keywords = keywords.toLowerCase().replace(/^[, ]+|[, ]+$|[, ]+|[, ]+$|[, ]+[.]+|[.]+/g, ' ').trim().replace(/\s+/g, ',')
+
+    // ^[, ]+|[, ]+$|[, ]+
+    // remove commas, multiple commas, or comma space
+    // [.]+|[.]+
+    // remove dots
+    // /g
+    // apply globally
+    // replace with a space (for the next steps)
+    // ' '
+    // trim()
+    // top and tail
+    // /\s+/g, ','
+    // global replace all strings of whitespace with commas
 
     // Insert form data into table
     Notice.create({
